@@ -19,6 +19,8 @@
     "test:db": "node scripts/test-mongodb-connection.js",
     "test:presentations": "node scripts/test-presentations.js",
     "test:processes": "node scripts/test-processes.js",
-    "init:db": "node scripts/initDatabase.js"
+    "init:db": "node scripts/initDatabase.js",
+    "deploy": "node deploy-to-netlify.js",
+    "deploy:with-env": "node deploy-with-env.js"
   }
 }
