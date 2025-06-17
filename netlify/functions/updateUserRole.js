@@ -8,8 +8,20 @@
 
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const { connectToDatabase } = require('../utils/db');
-const { validateMongoDBUri } = require('../utils/validation');
+const { connectToDatabase } = require('./utils/mongodb');
+
+// Validation function for MongoDB URI
+function validateMongoDBUri(uri) {
+  if (!uri) return 'MongoDB URI is not defined';
+  
+  // Basic format validation - more flexible to allow query parameters
+  const validFormat = /^mongodb(\+srv)?:\/\/.+:.+@.+\/.+/;
+  if (!validFormat.test(uri)) {
+    return 'MongoDB URI format is invalid. Expected format: mongodb(+srv)://username:password@host/database';
+  }
+  
+  return null; // No error
+}
 
 // Environment variables
 const JWT_SECRET = process.env.JWT_SECRET;
