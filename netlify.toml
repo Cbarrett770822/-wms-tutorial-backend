@@ -1,11 +1,13 @@
 [build]
-  command = "CI= npm run build"
-  publish = "build"
+  # No build command needed for backend-only deployment
+  command = "echo 'No build step required for serverless functions'"
+  # Use a simple public directory that we'll create
+  publish = "public"
   functions = "netlify/functions"
 
 [dev]
   command = "npm start"
-  port = 3000
+  port = 8889
 
 [[redirects]]
   from = "/api/*"
